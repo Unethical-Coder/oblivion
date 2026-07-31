@@ -71,7 +71,7 @@ export default function App() {
         <Stats stats={data.stats} />
         <Skills skills={data.skills} />
         <Projects projects={data.projects} />
-        <Contact />
+        <Contact profile={data.profile}/>
       </main>
       <Footer name={data.profile.name} />
     </>

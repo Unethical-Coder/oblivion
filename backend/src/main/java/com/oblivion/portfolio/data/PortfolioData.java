@@ -26,10 +26,10 @@ public class PortfolioData {
                         + "at Planview, with a habit of taking systems apart to understand why they "
                         + "hold together. Currently deep in system design, and looking for the next "
                         + "hard problem worth owning.",
-                "your.email@example.com", // TODO: your real email
-                "https://github.com/your-username", // TODO: your GitHub
-                "https://linkedin.com/in/your-username", // TODO: your LinkedIn
-                "/resume.pdf", // TODO: drop a resume.pdf into frontend/public/
+                "anurag.tradersfbd@gmail.com", 
+                "https://github.com/Unethical-Coder",
+                "https://www.linkedin.com/in/anurag-kumar04/",
+                "https://drive.google.com/file/d/1tHebrBrKKaS3wFlGV4m-otFa8BI-wPnv/view?usp=sharing",
                 "open to opportunities"
         );
     }
@@ -48,8 +48,8 @@ public class PortfolioData {
                 new Experience(
                         "Planview (formerly Sciforma)",
                         "Java Backend Software Engineer",
-                        "20XX", // TODO: your actual start date
-                        "2026",
+                        "2024",
+                        "Present",
                         "Bengaluru, India",
                         List.of(
                                 "Built and maintained enterprise-scale distributed systems in production.",
