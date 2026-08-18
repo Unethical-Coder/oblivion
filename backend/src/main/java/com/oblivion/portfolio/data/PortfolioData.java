@@ -64,14 +64,13 @@ public class PortfolioData {
     public List<Project> getProjects() {
         return List.of(
                 new Project(
-                        "ExpenseIQ",
-                        "AI-powered personal finance system",
-                        "A personal finance platform that categorizes and reasons about spending "
-                                + "in real time. Built as a learning vehicle for event-driven "
-                                + "architecture: Kafka streams transactions, Redis caches hot reads, "
-                                + "and a React frontend keeps the numbers legible.",
-                        List.of("Spring Boot", "Kafka", "Redis", "React"),
-                        "https://github.com/your-username/expenseiq", // TODO
+                        "AeroFlow",
+                        "Enterprise-grade distributed telemetry ingestion engine",
+                        "A high-throughput distributed system built to ingest, validate, and process massive volumes of telemetry data. "
+                                + "Features a Spring Boot API that performs strict Jakarta validation on nested JSON payloads "
+                                + "and streams them asynchronously into Confluent Kafka (KRaft) for backend processing.",
+                        List.of("Java 21", "Spring Boot 3", "Kafka", "PostgreSQL", "Docker"),
+                        "https://github.com/Unethical-Coder/aeroflow",
                         null
                 ),
                 new Project(
@@ -80,7 +79,7 @@ public class PortfolioData {
                         "A small, deliberate system: a Spring Boot API serving a React frontend, "
                                 + "built to be easy to extend as new projects and roles come in.",
                         List.of("React", "Spring Boot", "REST API"),
-                        "https://github.com/your-username/oblivion", // TODO
+                        "https://github.com/Unethical-Coder/oblivion",
                         null
                 )
         );
