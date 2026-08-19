@@ -86,19 +86,19 @@ public class PortfolioData {
     }
 
     public List<SkillGroup> getSkills() {
-        return List.of(
-                new SkillGroup("Languages", List.of("Java", "Python", "JavaScript", "SQL")),
-                new SkillGroup("Backend", List.of("Spring Boot", "REST APIs", "Microservices")),
-                new SkillGroup("Data & Messaging", List.of("PostgreSQL", "Kafka", "Redis")),
-                new SkillGroup("Infra & Tooling", List.of("Docker", "Git", "GitHub Actions")),
-                new SkillGroup("Frontend", List.of("React", "HTML/CSS")),
-                new SkillGroup("Currently learning", List.of("System Design", "Python for ML", "RAG & Agents"))
+    return List.of(
+            new SkillGroup("Languages", List.of("Java", "Python", "SQL", "JavaScript")),
+            new SkillGroup("Frameworks & Architecture", List.of("Spring Boot", "Microservices", "React.js", "REST APIs", "GraphQL", "Event-Driven Systems")),
+            new SkillGroup("Databases & Caching", List.of("PostgreSQL", "MySQL", "Oracle SQL", "Redis")),
+            new SkillGroup("Integration & DevOps", List.of("Kafka", "Docker", "Kubernetes", "AWS (S3)", "Git", "GitHub")),
+            new SkillGroup("System Design & Practices", List.of("System Design", "Production Support & Reliability", "Root Cause Analysis", "Unit Testing (JUnit, Mockito)")),
+            new SkillGroup("Currently learning", List.of("RAG & Agentic AI Systems", "Python for ML"))
         );
     }
 
     public List<Stat> getStats() {
         return List.of(
-                new Stat("950+", "LeetCode solved", "528+ Medium · 153+ Hard"),
+                new Stat("1000+", "LeetCode solved", "551+ Medium · 167+ Hard"),
                 new Stat("2 yrs", "Production experience", "Planview / Sciforma"),
                 new Stat("6", "Core technologies", "Java · Spring · Kafka · Redis · Postgres · Docker")
         );
