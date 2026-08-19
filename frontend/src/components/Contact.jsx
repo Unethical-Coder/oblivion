@@ -75,7 +75,6 @@ export default function Contact({profile}) {
         <div className="contact__intro">
           <h2>Let&apos;s talk</h2>
           <p>Open to backend and full-stack roles. The fastest way to reach me is the form below, or:</p>
-          <p>Open to backend and full-stack roles. The fastest way to reach me is the form below, or:</p>
           <a href={`mailto:${profile.email}`} className="contact__email">
             <IconMail /> {profile.email}
           </a>
