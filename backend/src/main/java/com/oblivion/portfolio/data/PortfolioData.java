@@ -46,18 +46,32 @@ public class PortfolioData {
     public List<Experience> getExperience() {
         return List.of(
                 new Experience(
-                        "Planview (formerly Sciforma)",
-                        "Java Backend Software Engineer",
-                        "2024",
+                        "Planview",
+                        "Software Engineer I",
+                        "August 2025",
                         "Present",
                         "Bengaluru, India",
                         List.of(
-                                "Built and maintained enterprise-scale distributed systems in production.",
-                                "Worked across the stack, from API design down through caching and messaging layers.",
-                                "Owned services on Java and Spring Boot, backed by PostgreSQL, Kafka and Redis, deployed with Docker."
+                                "Design and develop secure Java backend services and RESTful APIs (JAX-RS/Jersey, GraphQL) for an enterprise SaaS PPM platform across multithreaded, PostgreSQL-backed architectures.",
+                                "Own backend reliability for 50+ modules — lead root-cause analysis and resolution of 120+ production issues, from investigation through deployment and release support.",
+                                "Built a dynamic permission framework spanning 50+ modules, cutting authorization customizations by 80%, and optimized PostgreSQL queries to improve API performance by up to 35%.",
+                                "Use enterprise AI-assisted development tools (GitHub Copilot, Claude Code) for code generation and refactoring, validating outputs through peer review and automated testing (JUnit, Mockito)."
                         ),
-                        List.of("Java", "Spring Boot", "PostgreSQL", "Kafka", "Redis", "Docker")
-                )
+                        List.of("Java", "Spring Boot", "PostgreSQL", "REST APIs", "GraphQL", "JUnit/Mockito", "GitHub Copilot", "Claude Code")
+                ),
+                new Experience(
+                        "Planview (formerly Sciforma)",
+                        "Sofware Engineering Intern",
+                        "Sept 2024",
+                        "July 2025",
+                        "Bengaluru, India",
+                        List.of(
+                                "Investigated, debugged, and resolved 40+ customer-reported production issues on large-scale legacy systems through root-cause analysis and code fixes.",
+                                "Enhanced backend features and resolved defects across 15+ enterprise modules using Java, JDBC, and GWT.",
+                                "Deployed and supported applications on Apache Tomcat and PostgreSQL across dev and test environments, using Docker for containerized development on Linux."
+                        ),
+                        List.of("Java", "JDBC", "GWT", "Apache Tomcat", "PostgreSQL", "Docker")
+        )
         );
     }
 
@@ -100,7 +114,7 @@ public class PortfolioData {
         return List.of(
                 new Stat("1000+", "LeetCode solved", "551+ Medium · 167+ Hard"),
                 new Stat("2 yrs", "Production experience", "Planview / Sciforma"),
-                new Stat("6", "Core technologies", "Java · Spring · Kafka · Redis · Postgres · Docker")
+                new Stat("9", "Core technologies", "Java · Spring Boot · React.js · Kafka · Redis · PostgreSQL · Docker · Kubernetes · GraphQL")
         );
     }
 }
