@@ -53,7 +53,7 @@ public class PortfolioData {
                         "Bengaluru, India",
                         List.of(
                                 "Design and develop secure Java backend services and RESTful APIs (JAX-RS/Jersey, GraphQL) for an enterprise SaaS PPM platform across multithreaded, PostgreSQL-backed architectures.",
-                                "Own backend reliability for 50+ modules — lead root-cause analysis and resolution of 120+ production issues, from investigation through deployment and release support.",
+                                "Own backend reliability for 50+ modules and lead root-cause analysis and resolution of 120+ production issues, from investigation through deployment and release support.",
                                 "Built a dynamic permission framework spanning 50+ modules, cutting authorization customizations by 80%, and optimized PostgreSQL queries to improve API performance by up to 35%.",
                                 "Use enterprise AI-assisted development tools (GitHub Copilot, Claude Code) for code generation and refactoring, validating outputs through peer review and automated testing (JUnit, Mockito)."
                         ),
