@@ -18,7 +18,7 @@ public class PortfolioData {
     public Profile getProfile() {
         return new Profile(
                 "Anurag Kumar",
-                "Java Backend Engineer",
+                "Java focused Fullstack Engineer",
                 "Bengaluru, Karnataka, India",
                 "Systems that hold, when everything tends toward oblivion.",
                 "I build enterprise-scale distributed systems - the kind that stay up when it "
