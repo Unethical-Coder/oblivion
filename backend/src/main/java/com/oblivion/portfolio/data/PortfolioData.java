@@ -68,8 +68,9 @@ public class PortfolioData {
                         List.of(
                                 "Investigated, debugged, and resolved 40+ customer-reported production issues on large-scale legacy systems through root-cause analysis and code fixes.",
                                 "Enhanced backend features and resolved defects across 15+ enterprise modules using Java, JDBC, and GWT.",
-                                "Deployed and supported applications on Apache Tomcat and PostgreSQL across dev and test environments, using Docker for containerized development on Linux."
-                        ),
+                                "Designed and implemented an Activity Logs feature to track user actions across 8 enterprise modules, improving auditability
+and issue traceability..."
+– Modernized the test suite by fixing 200+ outdated JUnit test cases, improving code reliability and reducing regression risk.
                         List.of("Java", "JDBC", "GWT", "Apache Tomcat", "PostgreSQL", "Docker")
         )
         );
