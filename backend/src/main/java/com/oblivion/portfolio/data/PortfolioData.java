@@ -61,19 +61,27 @@ public class PortfolioData {
                 ),
                 new Experience(
                         "Planview (formerly Sciforma)",
-                        "Sofware Engineering Intern",
+                        "Software Engineering Intern",
                         "Sept 2024",
                         "July 2025",
                         "Bengaluru, India",
                         List.of(
                                 "Investigated, debugged, and resolved 40+ customer-reported production issues on large-scale legacy systems through root-cause analysis and code fixes.",
                                 "Enhanced backend features and resolved defects across 15+ enterprise modules using Java, JDBC, and GWT.",
-                                "Designed and implemented an Activity Logs feature to track user actions across 8 enterprise modules, improving auditability
-and issue traceability..."
-– Modernized the test suite by fixing 200+ outdated JUnit test cases, improving code reliability and reducing regression risk.
-                        List.of("Java", "JDBC", "GWT", "Apache Tomcat", "PostgreSQL", "Docker")
-        )
+                                "Designed and implemented an Activity Logs feature to track user actions across 8 enterprise modules, improving auditability and issue traceability.",
+                                "Modernized the test suite by fixing 200+ outdated JUnit test cases, improving code reliability and reducing regression risk."
+                        ),
+                        List.of(
+                                "Java",
+                                "JDBC",
+                                "GWT",
+                                "Apache Tomcat",
+                                "PostgreSQL",
+                                "Docker"
+                        )
+                )
         );
+
     }
 
     public List<Project> getProjects() {
