@@ -103,8 +103,21 @@ public class PortfolioData {
                                 + "built to be easy to extend as new projects and roles come in.",
                         List.of("React", "Spring Boot", "REST API"),
                         "https://github.com/Unethical-Coder/oblivion",
-                        null
-                )
+                        "https://oblivion-jade-nine.vercel.app/"
+                ),
+                new Project("ExpenseIQ", 
+                        " AI-Powered Personal Finance & Transaction Insights System (Full-Stack)", 
+                        "Built a full-stack application with a Java Spring Boot backend and React.js frontend, using Kafka, Redis, and PostgreSQL to" + 
+                        "support scalable real-time transaction processing." + 
+                        "Implemented event-driven architecture using Kafka, enabling scalable, decoupled communication between backend" + 
+                        "microservices." + 
+                        "Designed secure REST APIs with JWT-based authentication supporting real-time transaction processing and bulk" + 
+                        "transaction ingestion." + 
+                        "Applied structured prompt engineering with Claude Code and GitHub Copilot throughout the build — from architecture" +
+                        "scaffolding to debugging — validating AI-generated code through testing before integration.", 
+                        List.of("Spring Boot", "React.js", "Kafka", "Redis", "PostgreSQL", "Docker"), 
+                        "https://github.com/Unethical-Coder", 
+                        null)
         );
     }
 
