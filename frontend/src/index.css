@@ -209,6 +209,11 @@ p {
   color: var(--signal);
 }
 
+.nav__resume {
+  color: var(--signal) !important;
+  font-weight: 500;
+}
+
 .nav__toggle {
   display: none;
   flex-direction: column;
@@ -403,17 +408,77 @@ p {
 
 .about {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1.35fr 1fr;
   gap: 3rem;
+}
+
+.about__main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about__side {
+  border-left: 1px solid var(--panel-border);
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about__subheading {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--horizon);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.85rem;
 }
 
 .about__bio {
   font-size: 1.05rem;
 }
 
-.about__education {
-  border-left: 1px solid var(--panel-border);
-  padding-left: 1.5rem;
+.about__achievements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.about__achievement-item {
+  display: flex;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+
+.about__achievement-bullet {
+  color: var(--signal);
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.about__achievement-title {
+  color: var(--starlight);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.about__achievement-desc {
+  color: var(--ash);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.about__achievement-detail {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--horizon);
+  margin-top: 0.25rem;
 }
 
 .about__education-inst {
@@ -436,13 +501,45 @@ p {
 .about__education-detail {
   color: var(--ash);
   font-size: 0.9rem;
+  margin-top: 0.35rem;
+}
+
+.about__resume-action {
+  margin-top: 0.5rem;
+}
+
+.btn--resume-hero {
+  border-color: var(--horizon);
+  color: var(--signal);
+}
+
+.btn--resume-hero:hover {
+  border-color: var(--signal);
+  background: rgba(142, 237, 199, 0.08);
+}
+
+.btn--resume-about {
+  font-size: 0.8rem;
+  padding: 0.65rem 1.2rem;
+  color: var(--signal);
+  border-color: var(--panel-border);
+}
+
+.btn--resume-about:hover {
+  border-color: var(--signal);
+  background: rgba(142, 237, 199, 0.08);
+}
+
+.project-card__link--live {
+  color: var(--signal);
+  font-weight: 500;
 }
 
 @media (max-width: 720px) {
   .about {
     grid-template-columns: 1fr;
   }
-  .about__education {
+  .about__side {
     border-left: none;
     padding-left: 0;
     border-top: 1px solid var(--panel-border);

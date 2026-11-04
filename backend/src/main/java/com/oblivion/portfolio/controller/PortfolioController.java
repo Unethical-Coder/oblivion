@@ -28,6 +28,11 @@ public class PortfolioController {
         return data.getEducation();
     }
 
+    @GetMapping("/achievements")
+    public List<Achievement> getAchievements() {
+        return data.getAchievements();
+    }
+
     @GetMapping("/experience")
     public List<Experience> getExperience() {
         return data.getExperience();

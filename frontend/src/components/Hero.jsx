@@ -23,6 +23,16 @@ export default function Hero({ profile }) {
           <a href="#contact" className="btn btn--ghost">
             Get in touch
           </a>
+          {profile.resumeUrl && (
+            <a
+              href={profile.resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn--ghost btn--resume-hero"
+            >
+              Resume ↗
+            </a>
+          )}
         </div>
       </div>
 

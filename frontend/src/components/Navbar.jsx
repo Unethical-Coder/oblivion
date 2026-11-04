@@ -8,7 +8,7 @@ const LINKS = [
   { href: '#contact', label: 'Contact' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ resumeUrl }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -34,6 +34,17 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          {resumeUrl && (
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="nav__resume"
+              onClick={() => setOpen(false)}
+            >
+              Resume ↗
+            </a>
+          )}
         </nav>
       </div>
     </header>

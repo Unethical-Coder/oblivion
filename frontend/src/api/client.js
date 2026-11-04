@@ -23,6 +23,7 @@ async function request(path, options = {}) {
 export const api = {
   getProfile: () => request('/api/profile'),
   getEducation: () => request('/api/education'),
+  getAchievements: () => request('/api/achievements'),
   getExperience: () => request('/api/experience'),
   getProjects: () => request('/api/projects'),
   getSkills: () => request('/api/skills'),

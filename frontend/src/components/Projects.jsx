@@ -21,12 +21,17 @@ export default function Projects({ projects }) {
               <div className="project-card__links">
                 {project.repoUrl && (
                   <a href={project.repoUrl} target="_blank" rel="noreferrer">
-                    Source →
+                    Source ↗
                   </a>
                 )}
                 {project.liveUrl && (
-                  <a href={project.liveUrl} target="_blank" rel="noreferrer">
-                    Live →
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-card__link--live"
+                  >
+                    Live Demo ↗
                   </a>
                 )}
               </div>

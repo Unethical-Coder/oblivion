@@ -20,14 +20,15 @@ export default function App() {
     Promise.all([
       api.getProfile(),
       api.getEducation(),
+      api.getAchievements().catch(() => []),
       api.getExperience(),
       api.getProjects(),
       api.getSkills(),
       api.getStats(),
     ])
-      .then(([profile, education, experience, projects, skills, stats]) => {
+      .then(([profile, education, achievements, experience, projects, skills, stats]) => {
         if (!cancelled) {
-          setData({ profile, education, experience, projects, skills, stats })
+          setData({ profile, education, achievements, experience, projects, skills, stats })
         }
       })
       .catch((err) => {
@@ -63,15 +64,19 @@ export default function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar resumeUrl={data.profile.resumeUrl} />
       <main>
         <Hero profile={data.profile} />
-        <About profile={data.profile} education={data.education} />
+        <About
+          profile={data.profile}
+          education={data.education}
+          achievements={data.achievements}
+        />
         <Experience experience={data.experience} />
         <Stats stats={data.stats} />
         <Skills skills={data.skills} />
         <Projects projects={data.projects} />
-        <Contact profile={data.profile}/>
+        <Contact profile={data.profile} />
       </main>
       <Footer name={data.profile.name} />
     </>
