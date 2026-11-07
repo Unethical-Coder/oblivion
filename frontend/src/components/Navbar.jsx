@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const LINKS = [
   { href: '#about', label: 'About' },
@@ -10,9 +10,60 @@ const LINKS = [
 
 export default function Navbar({ resumeUrl }) {
   const [open, setOpen] = useState(false)
+  const [visible, setVisible] = useState(true)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const lastScrollY = useRef(0)
+  const ticking = useRef(false)
+
+  useEffect(() => {
+    lastScrollY.current = window.scrollY || 0
+
+    const handleScroll = () => {
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = Math.max(0, window.scrollY || 0)
+          const diff = currentScrollY - lastScrollY.current
+          const threshold = 8
+
+          // 1. At or near top of page: always visible
+          if (currentScrollY <= 40) {
+            setVisible(true)
+            setIsScrolled(false)
+            lastScrollY.current = currentScrollY
+          } else {
+            setIsScrolled(true)
+
+            // 2. Beyond top: evaluate directional scroll
+            if (Math.abs(diff) > threshold) {
+              if (diff > 0) {
+                // Scrolling down -> hide navbar (unless mobile menu is actively open)
+                if (!open) {
+                  setVisible(false)
+                }
+              } else {
+                // Scrolling up -> immediately reveal navbar
+                setVisible(true)
+              }
+              lastScrollY.current = currentScrollY
+            }
+          }
+
+          ticking.current = false
+        })
+        ticking.current = true
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [open])
 
   return (
-    <header className="nav">
+    <header
+      className={`nav ${visible ? 'nav--visible' : 'nav--hidden'} ${
+        isScrolled ? 'nav--scrolled' : ''
+      }`}
+    >
       <div className="nav__inner">
         <a href="#top" className="nav__logo">
           OBLIVION
