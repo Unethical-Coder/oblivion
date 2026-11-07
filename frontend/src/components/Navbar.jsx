@@ -15,6 +15,7 @@ export default function Navbar({ resumeUrl }) {
   const lastScrollY = useRef(0)
   const ticking = useRef(false)
 
+  // Direction-aware scroll tracking
   useEffect(() => {
     lastScrollY.current = window.scrollY || 0
 
@@ -58,14 +59,25 @@ export default function Navbar({ resumeUrl }) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [open])
 
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && open) {
+        setOpen(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [open])
+
   return (
     <header
       className={`nav ${visible ? 'nav--visible' : 'nav--hidden'} ${
         isScrolled ? 'nav--scrolled' : ''
-      }`}
+      } ${open ? 'nav--open' : ''}`}
     >
       <div className="nav__inner">
-        <a href="#top" className="nav__logo">
+        <a href="#top" className="nav__logo" onClick={() => setOpen(false)}>
           OBLIVION
         </a>
 
@@ -79,7 +91,10 @@ export default function Navbar({ resumeUrl }) {
           <span />
         </button>
 
-        <nav className={`nav__links ${open ? 'nav__links--open' : ''}`}>
+        <nav
+          className={`nav__links ${open ? 'nav__links--open' : ''}`}
+          aria-label="Primary navigation"
+        >
           {LINKS.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
               {link.label}
