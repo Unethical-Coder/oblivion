@@ -5,14 +5,20 @@
    warm signal (a live node) and cool horizon (the boundary line) as the two
    accents, serif display type for warmth against the technical mono labels. */
 :root {
-  --void: #0a0e16;
-  --panel: #131822;
-  --panel-border: #232a38;
+  --void: #090d16;
+  --void-deep: #050810;
+  --panel: rgba(19, 24, 34, 0.72);
+  --panel-solid: #131822;
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --panel-border-hover: rgba(95, 168, 176, 0.4);
   --starlight: #ece8dc;
   --ash: #8a9099;
   --signal: #d9a657;
   --horizon: #5fa8b0;
-  --danger: #e08585;
+  --danger: #ef4444;
+  --success: #10b981;
+  --wa-green: #25d366;
+  --wa-glow: rgba(37, 211, 102, 0.22);
 
   --font-display: 'Fraunces', serif;
   --font-body: 'Manrope', sans-serif;
@@ -38,6 +44,105 @@ body {
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- HelpShift-inspired Dynamic Ambient Background ---------- */
+
+.app-canvas {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.ambient-background {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -10;
+  overflow: hidden;
+  contain: strict;
+}
+
+/* Mouse-tracking Spotlight Glow */
+.ambient-spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    650px circle at var(--mouse-x, 50vw) var(--mouse-y, 35vh),
+    rgba(95, 168, 176, 0.085),
+    transparent 65%
+  );
+  transition: opacity 0.3s ease;
+}
+
+/* Cyber Geometric Grid with Vignette Mask */
+.ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 65% at 50% 0%, #000 35%, transparent 88%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 0%, #000 35%, transparent 88%);
+  opacity: 0.85;
+}
+
+/* Floating Ambient Luminous Orbs */
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(130px);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.ambient-orb--primary {
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 780px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(95, 168, 176, 0.16), transparent 70%);
+  animation: float-levitate 18s ease-in-out infinite alternate;
+}
+
+.ambient-orb--secondary {
+  top: 42%;
+  right: -140px;
+  width: 600px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.11), transparent 70%);
+  animation: float-levitate 22s ease-in-out infinite alternate-reverse;
+}
+
+.ambient-orb--tertiary {
+  bottom: 8%;
+  left: -120px;
+  width: 650px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(142, 237, 199, 0.10), transparent 70%);
+  animation: float-levitate 25s ease-in-out infinite alternate;
+}
+
+.ambient-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+}
+
+@keyframes float-levitate {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(25px, -35px) scale(1.06);
+  }
+  100% {
+    transform: translate(-20px, 25px) scale(0.96);
+  }
 }
 
 img,
@@ -281,10 +386,21 @@ p {
 }
 
 .hero__dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--signal);
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5), 0 0 6px rgba(16, 185, 129, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(16, 185, 129, 0), 0 0 12px rgba(16, 185, 129, 0.9);
+  }
 }
 
 .hero__cursor {
@@ -649,16 +765,22 @@ p {
 
 .project-card {
   background: var(--panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--panel-border);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.15s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
 }
 
 .project-card:hover {
-  border-color: var(--horizon);
+  transform: translateY(-4px);
+  border-color: var(--panel-border-hover);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.5), 0 0 24px -6px rgba(95, 168, 176, 0.16);
 }
 
 .project-card__head h3 {
@@ -690,72 +812,26 @@ p {
   color: var(--signal);
 }
 
-/* ---------- Contact ---------- */
+/* ---------- Contact & WhatsApp Form ---------- */
 
 .contact {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 3rem;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 3.5rem;
+  align-items: start;
 }
 
 .contact__intro h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
+  letter-spacing: -0.02em;
 }
 
 .contact__intro p {
   color: var(--ash);
-}
-
-.contact__form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.contact__form label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--ash);
-}
-
-.contact__form input,
-.contact__form textarea {
-  font-family: var(--font-body);
   font-size: 1rem;
-  background: var(--panel);
-  border: 1px solid var(--panel-border);
-  border-radius: 4px;
-  padding: 0.75rem;
-  color: var(--starlight);
-  resize: vertical;
+  line-height: 1.65;
 }
 
-.contact__form input:focus,
-.contact__form textarea:focus {
-  border-color: var(--horizon);
-  outline: none;
-}
-
-.field-error {
-  color: var(--danger);
-  font-size: 0.75rem;
-}
-
-.contact__note {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-}
-
-.contact__note--ok {
-  color: var(--horizon);
-}
-
-.contact__note--error {
-  color: var(--danger);
-}
 .contact__email {
   display: inline-flex;
   align-items: center;
@@ -771,10 +847,26 @@ p {
   color: var(--horizon);
 }
 
+.contact__direct-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--wa-green);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.contact__direct-wa:hover {
+  color: #4ade80;
+  transform: translateX(2px);
+}
+
 .contact__socials {
   display: flex;
   gap: 0.75rem;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   flex-wrap: wrap;
 }
 
@@ -806,19 +898,231 @@ p {
   color: var(--horizon);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .contact__social:hover {
-    transform: none;
-  }
+.contact__card {
+  padding: 2.2rem;
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.55), 0 0 24px -8px rgba(95, 168, 176, 0.12);
 }
 
-.contact__links a:hover {
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ash);
+  letter-spacing: 0.02em;
+}
+
+.form-label .req {
+  color: var(--signal);
+  margin-left: 2px;
+}
+
+.contact__form input,
+.contact__form select,
+.contact__form textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: rgba(10, 14, 22, 0.8);
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  color: var(--starlight);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.contact__form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a9099' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.contact__form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact__form input:focus,
+.contact__form select:focus,
+.contact__form textarea:focus {
+  outline: none;
+  border-color: var(--horizon);
+  background: rgba(14, 20, 32, 0.95);
+  box-shadow: 0 0 0 3px rgba(95, 168, 176, 0.22);
+}
+
+.contact__form input.input--error,
+.contact__form textarea.input--error {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.22);
+}
+
+.field-error {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--danger);
+  margin-top: 0.2rem;
+}
+
+.contact__form-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.btn--wa-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.95rem 1.8rem;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.28);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn--wa-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.42);
+}
+
+.contact__wa-note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ash);
+  text-align: center;
+}
+
+/* WhatsApp Handoff Success State */
+.contact__handoff {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact__handoff-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  color: var(--wa-green);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  width: fit-content;
+}
+
+.contact__handoff-icon {
+  display: flex;
+  color: var(--wa-green);
+}
+
+.contact__handoff-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--starlight);
+}
+
+.contact__handoff-desc {
+  color: var(--ash);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact__handoff-desc strong {
+  color: var(--starlight);
+}
+
+.contact__handoff-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.btn--wa {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: white;
+  justify-content: center;
+  font-weight: 600;
+  box-shadow: 0 4px 18px var(--wa-glow);
+}
+
+.btn--wa:hover {
+  box-shadow: 0 8px 26px rgba(37, 211, 102, 0.45);
+}
+
+.btn--link {
+  background: transparent;
+  border: none;
+  color: var(--ash);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0.4rem;
+  text-align: center;
+  transition: color 0.15s ease;
+}
+
+.btn--link:hover {
   color: var(--horizon);
 }
 
-@media (max-width: 720px) {
+.contact__handoff-footnote {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ash);
+  line-height: 1.45;
+  margin: 0;
+  opacity: 0.85;
+}
+
+@media (max-width: 820px) {
   .contact {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .contact__card {
+    padding: 1.5rem;
   }
 }
 

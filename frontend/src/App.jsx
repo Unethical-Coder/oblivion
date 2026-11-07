@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { api } from './api/client'
+import * as portfolioData from './data/portfolioData'
+import DynamicBackground from './components/DynamicBackground'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -12,46 +13,11 @@ import Footer from './components/Footer'
 
 export default function App() {
   const [data, setData] = useState(null)
-  const [error, setError] = useState(null)
 
   useEffect(() => {
-    let cancelled = false
-
-    Promise.all([
-      api.getProfile(),
-      api.getEducation(),
-      api.getAchievements().catch(() => []),
-      api.getExperience(),
-      api.getProjects(),
-      api.getSkills(),
-      api.getStats(),
-    ])
-      .then(([profile, education, achievements, experience, projects, skills, stats]) => {
-        if (!cancelled) {
-          setData({ profile, education, achievements, experience, projects, skills, stats })
-        }
-      })
-      .catch((err) => {
-        if (!cancelled) setError(err)
-      })
-
-    return () => {
-      cancelled = true
-    }
+    // Pure client-side data resolution (instant, zero network failure)
+    setData(portfolioData)
   }, [])
-
-  if (error) {
-    return (
-      <div className="status-screen">
-        <p className="status-screen__code">// connection_error</p>
-        <h1>Signal lost</h1>
-        <p>
-          Couldn&apos;t reach the backend. Make sure the Spring Boot API is running at{' '}
-          <code>{import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'}</code>.
-        </p>
-      </div>
-    )
-  }
 
   if (!data) {
     return (
@@ -63,7 +29,10 @@ export default function App() {
   }
 
   return (
-    <>
+    <div className="app-canvas">
+      {/* Dynamic ambient background inspired by HelpShift Labs */}
+      <DynamicBackground />
+
       <Navbar resumeUrl={data.profile.resumeUrl} />
       <main>
         <Hero profile={data.profile} />
@@ -79,6 +48,6 @@ export default function App() {
         <Contact profile={data.profile} />
       </main>
       <Footer name={data.profile.name} />
-    </>
+    </div>
   )
 }

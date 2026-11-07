@@ -1,36 +1,29 @@
-# Oblivion
+# Oblivion — Portfolio
 
-Anurag Kumar's portfolio site. A Spring Boot API serving a React frontend —
-Systems that hold, when everything tends toward oblivion.
+Anurag Kumar's modern, cloud-native portfolio site. Engineered as a pure frontend React application featuring dynamic ambient background depth inspired by HelpShift Labs, client-side data management, and direct WhatsApp enquiry automation.
 
 🌐 **[Live Demo](https://oblivion-jade-nine.vercel.app/)**
 
 ```
 oblivion/
-├── backend/    Spring Boot 3 (Java 17) REST API
-└── frontend/   React 18 + Vite
+├── frontend/             React 18 + Vite (SPA)
+│   ├── src/
+│   │   ├── components/   UI Components (DynamicBackground, Hero, Contact, etc.)
+│   │   ├── config/       Contact & WhatsApp configuration
+│   │   ├── data/         Single source of truth (portfolioData.js)
+│   │   ├── index.css     Custom design tokens & glassmorphic styling
+│   │   └── App.jsx       Root composition
+│   └── package.json
+└── README.md
 ```
 
-## Running it
+## Getting Started
 
-### Backend (needs Java 17+ and Maven)
+### Prerequisites
+- **Node.js**: `v18+` (tested on Node 24)
+- **npm**: `v10+`
 
-```bash
-cd backend
-mvn spring-boot:run
-```
-
-Runs on `http://localhost:8080`. Endpoints:
-
-- `GET /api/profile`
-- `GET /api/education`
-- `GET /api/experience`
-- `GET /api/projects`
-- `GET /api/skills`
-- `GET /api/stats`
-- `POST /api/contact` — body: `{ "name", "email", "message" }`
-
-### Frontend (needs Node 18+)
+### Local Development
 
 ```bash
 cd frontend
@@ -38,29 +31,44 @@ npm install
 npm run dev
 ```
 
-Runs on `http://localhost:5173` and expects the backend at
-`http://localhost:8080` (configurable via `VITE_API_BASE_URL` — copy
-`.env.example` to `.env` to change it).
+Launches locally at `http://localhost:5173`. Pure client-side — no backend, server, or database needed.
 
-For a production build: `npm run build` outputs static files to
-`frontend/dist`, which you can serve from any static host (or point Spring
-Boot at, if you'd rather ship a single deployable).
+### Production Build
 
-## Before you publish this
+```bash
+cd frontend
+npm run build
+```
 
-Search the codebase for `TODO` — a few things are placeholders on purpose:
+Generates high-performance static assets in `frontend/dist`, ready to deploy to Vercel, Netlify, GitHub Pages, or Cloudflare Pages.
 
-- `backend/.../data/PortfolioData.java` — your real email, GitHub, LinkedIn,
-  resume link, and exact employment dates.
-- `frontend/public/` — drop a `resume.pdf` here if you want the résumé link
-  in the profile data to resolve to something real.
-- The contact form currently just logs submissions server-side
-  (`ContactController`). Wire in an email send (e.g. JavaMailSender) or a
-  database write when you're ready to actually receive messages.
+---
 
-## Extending it
+## Configuration
 
-All content lives as plain data in `PortfolioData.java` — no database, no
-migrations. Add a project, a job, a skill group, by editing the lists there
-and restarting the backend. The frontend just renders whatever the API
-returns, so it picks up changes automatically.
+### WhatsApp Automation
+
+When visitors fill out the **Get in Touch** form, their message is validated client-side, formatted, and launched directly via WhatsApp Click-to-Chat (`wa.me`).
+
+To configure your recipient WhatsApp number:
+
+1. **Option A (Environment Variable)**:
+   Create a `.env` file in `frontend/`:
+   ```env
+   VITE_WHATSAPP_NUMBER=919319808968
+   ```
+   *(Use the international format with country code and no plus sign or spaces).*
+
+2. **Option B (Configuration File)**:
+   Edit `frontend/src/config/contact.js`:
+   ```javascript
+   export const CONTACT_CONFIG = {
+     whatsappNumber: '919319808968', // your WhatsApp number
+     recipientEmail: 'anurag.tradersfbd@gmail.com',
+     recipientName: 'Anurag Kumar',
+   }
+   ```
+
+### Portfolio Data
+
+All portfolio content (bio, work experience, technical skills, projects, achievements, stats) lives in `frontend/src/data/portfolioData.js`. Simply edit the values there to update your site content instantly.
