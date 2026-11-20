@@ -14,6 +14,7 @@ export const profile = {
   phone: "+91-9319808968",
   github: "https://github.com/Unethical-Coder",
   linkedin: "https://www.linkedin.com/in/anurag-kumar04/",
+  leetcode: "https://leetcode.com/u/anurag_04/",
   resumeUrl: "https://drive.google.com/file/d/1I_rzKzBbE0ebiNrbjQgpZ6W9eAEzrbmO/view?usp=drive_link",
   status: "open to opportunities",
 }
@@ -32,9 +33,10 @@ export const achievements = [
     detail: "Planview Global Internal Hackathon",
   },
   {
-    title: "LeetCode 1000+ Solved & 940+ Day Streak",
-    description: "Solved 1000+ Data Structures & Algorithms problems primarily in Java; maintained a 940+ day continuous problem-solving streak.",
-    detail: "551+ Medium | 167+ Hard",
+    title: "LeetCode 1100+ Solved & 1050+ Day Streak",
+    description: "Solved 1100+ Data Structures & Algorithms problems primarily in Java; maintained a 1050+ day continuous problem-solving streak.",
+    detail: "592+ Medium | 189+ Hard",
+    link: "https://leetcode.com/u/anurag_04/",
   },
   {
     title: "Industry Certifications",
@@ -280,9 +282,10 @@ export const stats = [
     detail: "Planview / Sciforma SaaS PPM",
   },
   {
-    value: "1000+",
+    value: "1100+",
     label: "LeetCode Solved",
-    detail: "940+ day streak | Java DSA",
+    detail: "1050+ day streak | 592+ Med · 189+ Hard",
+    url: "https://leetcode.com/u/anurag_04/",
   },
   {
     value: "10k+ /s",

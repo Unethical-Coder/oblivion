@@ -14,7 +14,18 @@ export default function About({ profile, education, achievements }) {
                   <li key={idx} className="about__achievement-item">
                     <div className="about__achievement-bullet" aria-hidden="true">›</div>
                     <div>
-                      <strong className="about__achievement-title">{item.title}</strong>
+                      {item.link ? (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="about__achievement-link"
+                        >
+                          <strong className="about__achievement-title">{item.title} ↗</strong>
+                        </a>
+                      ) : (
+                        <strong className="about__achievement-title">{item.title}</strong>
+                      )}
                       <p className="about__achievement-desc">{item.description}</p>
                       {item.detail && (
                         <span className="about__achievement-detail">{item.detail}</span>

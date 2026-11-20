@@ -36,6 +36,14 @@ function IconLinkedin() {
   )
 }
 
+function IconLeetCode() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.247 2.198 5.864 2.198 8.111 0l3.784-3.703a1.435 1.435 0 0 0 .065-2.008 1.42 1.42 0 0 0-2.016-.064l-3.78 3.703c-1.124 1.099-2.932 1.099-4.056 0l-.039-.039-4.278-4.193a3.07 3.07 0 0 1-.656-.938 3.14 3.14 0 0 1-.186-.525 3.09 3.09 0 0 1-.033-1.233 3.03 3.03 0 0 1 .632-1.077l3.855-4.127 5.405-5.788a1.435 1.435 0 0 0-.065-2.008A1.374 1.374 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
+    </svg>
+  )
+}
+
 function IconResume() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -225,6 +233,14 @@ export default function Contact({ profile }) {
             </a>
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="contact__social">
               <IconLinkedin /> <span>LinkedIn</span>
+            </a>
+            <a
+              href={profile.leetcode || "https://leetcode.com/u/anurag_04/"}
+              target="_blank"
+              rel="noreferrer"
+              className="contact__social"
+            >
+              <IconLeetCode /> <span>LeetCode</span>
             </a>
             <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className="contact__social">
               <IconResume /> <span>Resume</span>

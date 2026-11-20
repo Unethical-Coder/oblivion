@@ -687,6 +687,16 @@ main {
   font-size: 0.95rem;
 }
 
+.about__achievement-link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.15s ease;
+}
+
+.about__achievement-link:hover .about__achievement-title {
+  color: var(--signal);
+}
+
 .about__achievement-desc {
   color: var(--ash);
   font-size: 0.9rem;
@@ -841,6 +851,37 @@ main {
   font-size: 0.75rem;
   color: var(--ash);
   margin-bottom: 0;
+}
+
+.stats__item--link {
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.stats__item--link:hover {
+  transform: translateY(-2px);
+}
+
+.stats__item--link:hover .stats__value {
+  color: #f6c065;
+}
+
+.stats__link-icon {
+  font-size: 0.95rem;
+  margin-left: 0.35rem;
+  opacity: 0.75;
+  font-family: var(--font-mono);
+  vertical-align: super;
+  display: inline-block;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.stats__item--link:hover .stats__link-icon {
+  opacity: 1;
+  transform: translate(2px, -2px);
 }
 
 /* ---------- Skills ---------- */

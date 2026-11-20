@@ -2,7 +2,7 @@ const NODES = [
   { x: 50, y: 210, label: 'LPU', sub: "B.Tech CS, '21" },
   { x: 210, y: 110, label: 'Sciforma', sub: 'Intern' },
   { x: 380, y: 165, label: 'Planview', sub: 'Backend Engineer' },
-  { x: 545, y: 85, label: 'Next', sub: 'In progress' },
+  { x: 535, y: 85, label: 'QuickLend', sub: 'SDE' },
 ]
 
 const EDGES = [
@@ -22,7 +22,7 @@ export default function NodeMap() {
       viewBox="0 0 600 300"
       className="node-map"
       role="img"
-      aria-label="Career path: Lovely Professional University, to Sciforma, to Planview, to what's next"
+      aria-label="Career path: Lovely Professional University, to Sciforma, to Planview, to QuickLend"
     >
       {STARS.map(([x, y], i) => (
         <circle key={`star-${i}`} cx={x} cy={y} r="1.4" className="node-map__star" />
