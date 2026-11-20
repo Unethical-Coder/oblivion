@@ -1,9 +1,9 @@
 const NODES = [
-  { x: 45, y: 195, label: 'LPU', sub: "B.Tech CS, '21" },
-  { x: 180, y: 95, label: 'Sciforma', sub: 'Intern' },
-  { x: 320, y: 185, label: 'Planview', sub: 'Backend Engineer' },
-  { x: 460, y: 95, label: 'QuickLend', sub: 'SDE' },
-  { x: 585, y: 185, label: 'Interstellar', sub: 'Wherever the stars take' },
+  { x: 55, y: 215, label: 'LPU', sub: "B.Tech CS, '25" },
+  { x: 190, y: 95, label: 'Sciforma', sub: 'Intern' },
+  { x: 335, y: 205, label: 'Planview', sub: 'Backend Engineer' },
+  { x: 475, y: 95, label: 'QuickLend', sub: 'SDE' },
+  { x: 595, y: 205, label: 'Interstellar', sub: 'Wherever the stars take' },
 ]
 
 const EDGES = [
@@ -14,21 +14,21 @@ const EDGES = [
 ]
 
 const STARS = [
-  [30, 40], [110, 265], [300, 35], [470, 245],
-  [565, 35], [180, 15], [420, 260], [10, 150], [260, 200],
-  [530, 255], [620, 60], [640, 220],
+  [30, 45], [115, 270], [300, 30], [470, 255],
+  [565, 30], [180, 15], [420, 270], [15, 140], [260, 215],
+  [535, 265], [625, 55], [655, 230],
 ]
 
 export default function NodeMap() {
   return (
     <svg
-      viewBox="0 0 660 280"
+      viewBox="0 0 680 300"
       className="node-map"
       role="img"
-      aria-label="Career path: Lovely Professional University, to Sciforma, to Planview, to QuickLend, to Interstellar — wherever the stars take"
+      aria-label="Career path: Lovely Professional University (Class of 2025), to Sciforma, to Planview, to QuickLend, to Interstellar — wherever the stars take"
     >
       {STARS.map(([x, y], i) => (
-        <circle key={`star-${i}`} cx={x} cy={y} r="1.4" className="node-map__star" />
+        <circle key={`star-${i}`} cx={x} cy={y} r="1.5" className="node-map__star" />
       ))}
 
       {EDGES.map(([a, b], i) => (
@@ -53,15 +53,15 @@ export default function NodeMap() {
             <circle
               cx={n.x}
               cy={n.y}
-              r="12"
+              r="14"
               className="node-map__ping"
               style={{ animationDelay: `${i * 0.5}s` }}
             />
-            <circle cx={n.x} cy={n.y} r="5" className="node-map__dot" />
-            <text x={n.x} y={n.y - 20} className="node-map__label">
+            <circle cx={n.x} cy={n.y} r="6" className="node-map__dot" />
+            <text x={n.x} y={n.y - 22} className="node-map__label">
               {n.label}
             </text>
-            <text x={n.x} y={n.y + 30} className="node-map__sub">
+            <text x={n.x} y={n.y + 32} className="node-map__sub">
               {n.sub}
             </text>
           </g>
