@@ -609,6 +609,21 @@ main {
   text-anchor: middle;
 }
 
+.node-map__node--future .node-map__dot {
+  fill: var(--signal);
+  filter: drop-shadow(0 0 6px rgba(217, 166, 87, 0.85));
+}
+
+.node-map__node--future .node-map__label {
+  fill: var(--signal);
+  font-weight: 500;
+}
+
+.node-map__node--future .node-map__sub {
+  fill: var(--starlight);
+  opacity: 0.85;
+}
+
 @keyframes ping {
   0% {
     opacity: 0.6;
