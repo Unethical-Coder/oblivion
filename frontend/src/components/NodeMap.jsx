@@ -3,7 +3,7 @@ const NODES = [
   { x: 220, y: 85, label: 'Sciforma', sub: 'Internship', desc: 'The beginning' },
   { x: 370, y: 215, label: 'Planview', sub: 'Software Engineer I', desc: 'The growth' },
   { x: 520, y: 85, label: 'QuickLend', sub: 'SDE', desc: 'The next chapter' },
-  { x: 670, y: 215, label: 'Interstellar', sub: 'The unknown', desc: 'Wherever the stars take me' },
+  { x: 670, y: 215, label: 'Interstellar', sub: 'The unknown' },
 ]
 
 const EDGES = [
@@ -25,7 +25,7 @@ export default function NodeMap() {
       viewBox="0 0 780 310"
       className="node-map"
       role="img"
-      aria-label="Career trajectory: LPU (2021–2025: The foundation), Sciforma (Internship: The beginning), Planview (Software Engineer I: The growth), QuickLend (SDE: The next chapter), to Interstellar (The unknown: Wherever the stars take me)"
+      aria-label="Career trajectory: LPU (2021–2025: The foundation), Sciforma (Internship: The beginning), Planview (Software Engineer I: The growth), QuickLend (SDE: The next chapter), to Interstellar (The unknown)"
     >
       {STARS.map(([x, y], i) => (
         <circle key={`star-${i}`} cx={x} cy={y} r="1.5" className="node-map__star" />
@@ -73,9 +73,11 @@ export default function NodeMap() {
             <text x={n.x} y={n.y + 26} className="node-map__sub">
               {n.sub}
             </text>
-            <text x={n.x} y={n.y + 45} className="node-map__desc">
-              {n.desc}
-            </text>
+            {n.desc && (
+              <text x={n.x} y={n.y + 45} className="node-map__desc">
+                {n.desc}
+              </text>
+            )}
           </g>
         )
       })}
